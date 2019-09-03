@@ -2,13 +2,12 @@ package com.lwj.algo._00_utils;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * create by lwj on 2019/9/2
  */
-public class Utils {
+public class BaseUtils {
 
     @Test
     public void test1() {
@@ -17,9 +16,29 @@ public class Utils {
 
 
     /**
+     * array to list
+     */
+    public static List<Integer> toList(int [] arr){
+        List<Integer> list = new ArrayList<Integer>(arr.length);
+        for (int i = 0; i <arr.length ; i++) {
+            list.add(arr[i]);
+        }
+        return list;
+    }
+
+    /**
+     * 交换数组中的两个数
+     */
+    public static void swap(int[]arr ,int i,int j){
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
+    }
+
+    /**
      * 判断传入的两个集合是否相等
      */
-    public static boolean isEqual(List <Integer> l1,List<Integer> l2) {
+    public static boolean isEqual(Collection <Integer> l1,Collection<Integer> l2) {
         if(l1.size()!=l2.size()){
             return false;
         }
@@ -53,7 +72,7 @@ public class Utils {
         return arr;
     }
 
-    public static void printArr(int []arr){
+    public static void print(int []arr){
         System.out.print("[");
         for(int i=0;i<arr.length;i++){
             System.out.print(arr[i]);
@@ -63,6 +82,10 @@ public class Utils {
         }
         System.out.print("]");
         System.out.println();
+    }
+
+    public static void print(Collection c){
+        System.out.println(c);
     }
 
     /**
