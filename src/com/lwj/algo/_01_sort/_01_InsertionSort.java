@@ -11,7 +11,6 @@ import static com.lwj.algo._00_utils.BaseUtils.print;
 
 /**
  * create by lwj on 2019/9/3
- * <p>
  * 插入排序
  */
 public class _01_InsertionSort {

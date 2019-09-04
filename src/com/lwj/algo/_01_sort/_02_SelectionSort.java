@@ -11,7 +11,6 @@ import static com.lwj.algo._00_utils.BaseUtils.*;
 
 /**
  * create by lwj on 2019/9/3
- * <p>
  * 选择排序
  * 选择排序的实现思路类似于插入排序，也分已排序区间和未排序区间，
  * 选择排序每次会从未排序区间中找到最小元素，放到已排序区间末尾

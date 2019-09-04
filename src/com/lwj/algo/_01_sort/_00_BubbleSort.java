@@ -9,7 +9,6 @@ import static com.lwj.algo._00_utils.BaseUtils.*;
 
 /**
  * create by lwj on 2019/9/3
- *
  * 冒泡排序
  * 比较当前数和下一个数，当前大于下一个则进行交换 一轮排序将一组数的最大值换至末尾
  */
