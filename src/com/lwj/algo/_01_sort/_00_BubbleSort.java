@@ -27,10 +27,10 @@ public class _00_BubbleSort {
             List<Integer> res1 = BaseUtils.toList(arr1);
             List<Integer> res2 = bubbleSort(arr2);
             if (!isEqual(res1, res2)) {
-                print(arr1);
-                print(arr2);
-                print(res1);
-                print(res2);
+                printl(arr1);
+                printl(arr2);
+                printl(res1);
+                printl(res2);
                 succeed = false;
                 break;
             }

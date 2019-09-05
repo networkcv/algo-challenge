@@ -3,7 +3,7 @@ package com.lwj.algo._01_sort;
 import com.lwj.algo._00_utils.BaseUtils;
 import org.junit.Test;
 
-import static com.lwj.algo._00_utils.BaseUtils.print;
+import static com.lwj.algo._00_utils.BaseUtils.printl;
 
 /**
  * create by lwj on 2019/9/4
@@ -32,8 +32,8 @@ public class _11_SmallSum {
             Integer i1 = smallSum0(arr1);
             Integer i2 = smallSum(arr2);
             if (!i1.equals(i2)) {
-                print(arr1);
-                print(arr2);
+                printl(arr1);
+                printl(arr2);
                 System.out.println(i1);
                 System.out.println(i2);
                 succeed = false;

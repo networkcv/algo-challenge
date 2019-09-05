@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.lwj.algo._00_utils.BaseUtils.isEqual;
-import static com.lwj.algo._00_utils.BaseUtils.print;
+import static com.lwj.algo._00_utils.BaseUtils.printl;
 
 /**
  * create by lwj on 2019/9/3
@@ -28,10 +28,10 @@ public class _01_InsertionSort {
             List<Integer> res1 = BaseUtils.toList(arr1);
             List<Integer> res2 = insertionSort(arr2);
             if (!isEqual(res1, res2)) {
-                print(arr1);
-                print(arr2);
-                print(res1);
-                print(res2);
+                printl(arr1);
+                printl(arr2);
+                printl(res1);
+                printl(res2);
                 succeed = false;
                 break;
             }

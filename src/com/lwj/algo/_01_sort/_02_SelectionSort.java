@@ -21,11 +21,11 @@ public class _02_SelectionSort {
     @Test
     public void ttest1() {
         int[] ints = generateRandomArray(10, 10);
-        print(ints);
+        printl(ints);
         List<Integer> list = selectionSort(ints);
-        print(list);
+        printl(list);
         Arrays.sort(ints);
-        print(ints);
+        printl(ints);
     }
 
     @Test
@@ -41,10 +41,10 @@ public class _02_SelectionSort {
             List<Integer> res1 = toList(arr1);
             List<Integer> res2 = selectionSort(arr2);
             if (!isEqual(res1, res2)) {
-                print(arr1);
-                print(arr2);
-                print(res1);
-                print(res2);
+                printl(arr1);
+                printl(arr2);
+                printl(res1);
+                printl(res2);
                 succeed = false;
                 break;
             }

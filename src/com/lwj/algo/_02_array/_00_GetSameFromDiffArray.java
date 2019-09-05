@@ -12,7 +12,7 @@ import static com.lwj.algo._00_utils.BaseUtils.*;
 
 /**
  * create by lwj on 2019/9/2
- *
+ * <p>
  * A 数组无序,B 数组有序，
  * 打印两数组中相同的值
  * 相同的值不重复打印
@@ -32,10 +32,10 @@ public class _00_GetSameFromDiffArray {
             Set<Integer> res2 = printDiff2(A, B);
 //            Set<Integer> res2 = printDiff3(A, B);
             if (!isEqual(res1, res2)) {
-                print(A);
-                print(B);
-                print(res1);
-                print(res2);
+                printl(A);
+                printl(B);
+                printl(res1);
+                printl(res2);
                 succeed = false;
                 break;
             }
