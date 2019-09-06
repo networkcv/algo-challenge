@@ -3,7 +3,6 @@ package com.lwj.algo._01_sort;
 import com.lwj.algo._00_utils.BaseUtils;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static com.lwj.algo._00_utils.BaseUtils.isEqual;
@@ -32,7 +31,7 @@ public class _99_SortArrayByOdevity {
             int[] arr1 = BaseUtils.generateRandomArray(sortedArrayMaxSize, maxValue);
             int[] arr2 = arr1.clone();
             List<Integer> res1 = sortArrayByOdevity0(arr1);
-            List<Integer> res2 = sortArrayByOdevity(arr2);
+            List<Integer> res2 = sortArrayByOdevity2(arr2);
             if (!isEqual(res1, res2)) {
                 printl(arr1);
                 printl(arr2);
@@ -43,6 +42,19 @@ public class _99_SortArrayByOdevity {
             }
         }
         System.out.println(succeed ? "Nice!" : "Error!!!");
+    }
+
+    //单指针
+    public List<Integer> sortArrayByOdevity2(int[]arr){
+        int i=0,tmp;
+        for (int j = 0; j < arr.length; j++) {
+            if (arr[j]%2==1){
+                tmp=arr[j];
+                arr[j]=arr[i];
+                arr[i++]=tmp;
+            }
+        }
+        return BaseUtils.toList(arr);
     }
 
     //双指针原地排序
