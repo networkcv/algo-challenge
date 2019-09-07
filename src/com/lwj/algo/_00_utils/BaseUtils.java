@@ -26,9 +26,12 @@ public class BaseUtils {
      * 交换数组中的两个数
      */
     public static void swap(int[] arr, int i, int j) {
-        arr[i] = arr[i] ^ arr[j];
-        arr[j] = arr[i] ^ arr[j];
-        arr[i] = arr[i] ^ arr[j];
+        int tmp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=tmp;
+//        arr[i] = arr[i] ^ arr[j];
+//        arr[j] = arr[i] ^ arr[j];
+//        arr[i] = arr[i] ^ arr[j];
     }
 
     /**
