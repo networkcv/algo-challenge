@@ -16,10 +16,11 @@ import static com.lwj.algo._00_utils.BaseUtils.*;
  * 选择分区的过程其实类似_99_SortArrayByOdevity 不过这里不是分奇偶，而是根据末尾值作为判定，分为大小两个区间
  * 首先可以在分区的过程中优化，从之前的分大小两个区，改为分大中小三个区，类似于荷兰国旗问题
  *
- *   最好时间复杂度   平均时间复杂度  最坏时间复杂度      空间复杂度      是否稳定
- *     O(nlogn)       O(nlogn)        O(n^2)           O(logn)       不稳定
+ * 最好时间复杂度   平均时间复杂度  最坏时间复杂度     空间复杂度     是否稳定
+ *    O(nlogn)       O(nlogn)        O(n^2)           O(logn)       不稳定
+ * 空间复杂度最好为 O(logN) 最差为O(N)
  *
- *  空间复杂度最好为 O(logN) 最差为O(N)
+ * point点和比point大的区域的第一个元素交换位置，因此快排不是稳定排序，例如 6 6 4 交换后 4 6 6
  */
 public class _04_QuickSort {
 
@@ -36,6 +37,7 @@ public class _04_QuickSort {
 //            List<Integer> res1 = quickSort(arr1);
             List<Integer> res1 = quickSort0(arr1);
             List<Integer> res2 = quickSort1(arr2);
+//            List<Integer> res2 = quickSort2(arr2);
             if (!isEqual(res1, res2)) {
                 printl(src);
                 printl(res1);
@@ -133,38 +135,29 @@ public class _04_QuickSort {
         int i = le - 1, j = ri;
         while (le < j) {
             if (arr[le] < arr[ri]) {
-                sp(arr, ++i, le++);
+                swap(arr, ++i, le++);
             } else if (arr[le] > arr[ri]) {
-                sp(arr, --j, le);
+                swap(arr, --j, le);
             } else {
                 le++;
             }
         }
-        sp(arr, j, ri);
+        swap(arr, j, ri);
         return new int[]{i, ++j};
     }
 
-    private void sp(int[] arr, int i, int j) {
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
-    }
 
     //随机快排
     //随机选取分区点，使时间复杂度大概率在O(N*logN)
-    public List<Integer> partition2(int[] arr){
-        quickSort2(arr, 0, arr.length - 1);
-        return toList(arr);
-    }
-
-
     private void quickSort2(int[] arr, int le, int ri) {
         if (le < ri) {
             //从le到ri之间随机取一个数，跟ri位置数交换
-            swap(arr,le+(int)((ri-le+1)*Math.random()),ri);
+            swap(arr, le + (int) ((ri - le + 1) * Math.random()), ri);
             int[] ints = partition1(arr, le, ri);
             quickSort1(arr, le, ints[0]);
             quickSort1(arr, ints[1], ri);
         }
     }
+
+
 }

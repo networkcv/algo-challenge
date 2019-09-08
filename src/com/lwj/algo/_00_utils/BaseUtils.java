@@ -26,9 +26,9 @@ public class BaseUtils {
      * 交换数组中的两个数
      */
     public static void swap(int[] arr, int i, int j) {
-        int tmp=arr[i];
-        arr[i]=arr[j];
-        arr[j]=tmp;
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
 //        arr[i] = arr[i] ^ arr[j];
 //        arr[j] = arr[i] ^ arr[j];
 //        arr[i] = arr[i] ^ arr[j];
@@ -38,6 +38,9 @@ public class BaseUtils {
      * 判断传入的两个集合是否相等
      */
     public static boolean isEqual(Collection<Integer> l1, Collection<Integer> l2) {
+        if (l1 == null || l2 == null) {
+            return false;
+        }
         if (l1.size() != l2.size()) {
             return false;
         }

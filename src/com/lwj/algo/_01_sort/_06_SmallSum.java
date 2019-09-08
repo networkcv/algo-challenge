@@ -19,7 +19,7 @@ import static com.lwj.algo._00_utils.BaseUtils.printl;
  * 5左边比5小的数， 1、 3、 4、 2；
  * 所以小和为1+1+3+1+1+3+4+2=16
  */
-public class _11_SmallSum {
+public class _06_SmallSum {
     @Test
     public void test() {
         int testTime = 10;
