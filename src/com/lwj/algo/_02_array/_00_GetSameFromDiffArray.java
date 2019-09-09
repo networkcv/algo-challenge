@@ -12,7 +12,7 @@ import static com.lwj.algo._00_utils.BaseUtils.*;
 
 /**
  * create by lwj on 2019/9/2
- * <p>
+ *
  * A 数组无序,B 数组有序，
  * 打印两数组中相同的值
  * 相同的值不重复打印
