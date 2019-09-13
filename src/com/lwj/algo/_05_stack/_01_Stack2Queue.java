@@ -1,4 +1,4 @@
-package com.lwj.algo._03_stack;
+package com.lwj.algo._05_stack;
 
 import java.util.Stack;
 

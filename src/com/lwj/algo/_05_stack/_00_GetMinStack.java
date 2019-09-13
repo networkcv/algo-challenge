@@ -1,6 +1,4 @@
-package com.lwj.algo._03_stack;
-
-import org.omg.PortableInterceptor.INACTIVE;
+package com.lwj.algo._05_stack;
 
 import java.util.Stack;
 

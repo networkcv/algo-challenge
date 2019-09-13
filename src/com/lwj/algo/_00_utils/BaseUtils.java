@@ -10,11 +10,63 @@ import java.util.List;
  */
 public class BaseUtils {
 
+    /**
+     * 数组转双向链表
+     */
+    public static DoubleNode toDobuleLinkedList(int... ints) {
+        return ArrayToDobuleLinkedList(ints);
+    }
+
+    private static DoubleNode ArrayToDobuleLinkedList(int[] arr) {
+        if (arr.length == 0) {
+            throw new RuntimeException("array size is 0");
+        }
+        DoubleNode pre = new DoubleNode(arr[0]);
+        DoubleNode head = pre;
+        if (arr.length == 1) {
+            return head;
+        }
+        for (int i = 1; i < arr.length; i++) {
+            DoubleNode curNode = new DoubleNode(arr[i]);
+            pre.next = curNode;
+            curNode.last = pre;
+            pre = curNode;
+        }
+        return head;
+    }
+
+    /**
+     * 数组转单链表
+     */
+    public static Node toLinkedList(int... ints) {
+        return arrayToLinkedList(ints);
+    }
+
+    private static Node arrayToLinkedList(int[] arr) {
+        if (arr.length == 0) {
+            throw new RuntimeException("array size is 0");
+        }
+        Node preNode = new Node(arr[0]);
+        Node head = preNode;
+        if (arr.length == 1) {
+            return head;
+        }
+        for (int i = 1; i < arr.length; i++) {
+            Node node = new Node(arr[i]);
+            preNode.next = node;
+            preNode = node;
+        }
+        return head;
+    }
 
     /**
      * array to list
      */
-    public static List<Integer> toList(int[] arr) {
+    public static List<Integer> toList(int... ints) {
+        return arrayToList(ints);
+    }
+
+    private static List<Integer> arrayToList(int[] arr) {
         List<Integer> list = new ArrayList<Integer>(arr.length);
         for (int i = 0; i < arr.length; i++) {
             list.add(arr[i]);
@@ -74,6 +126,9 @@ public class BaseUtils {
         return arr;
     }
 
+    /**
+     * 打印数组
+     */
     public static void printl(int[] arr) {
         System.out.print("[");
         for (int i = 0; i < arr.length; i++) {
@@ -86,8 +141,42 @@ public class BaseUtils {
         System.out.println();
     }
 
+    /**
+     * 打印集合
+     */
     public static void printl(Collection c) {
         System.out.println(c);
+    }
+
+    /**
+     * 打印单链表
+     */
+    public static void printl(Node head) {
+        System.out.print("Linked List: ");
+        while (head != null) {
+            System.out.print(head.value + " ");
+            head = head.next;
+        }
+        System.out.println();
+    }
+
+    /**
+     * 打印双向链表
+     */
+    public static void printl(DoubleNode head) {
+        System.out.print("Double Linked List: ");
+        DoubleNode end = null;
+        while (head != null) {
+            System.out.print(head.value + " ");
+            end = head;
+            head = head.next;
+        }
+        System.out.print("| ");
+        while (end != null) {
+            System.out.print(end.value + " ");
+            end = end.last;
+        }
+        System.out.println();
     }
 
     /**
