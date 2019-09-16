@@ -2,6 +2,7 @@ package com.lwj.algo._02_array;
 
 /**
  * create by lwj on 2019/9/8
+ * 数组实现栈和队列
  */
 public class _01_Array2Stack_Queue {
     public static class Array2Stack {
