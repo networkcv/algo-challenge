@@ -15,8 +15,12 @@ public class _03_SmallerEqualBigger {
     @Test
     public void test() {
         Node head = BaseUtils.toLinkedList(1, 3, 4, 2, 5, 7, 6);
-        Node node = smallerEqualBigger1(head, 6);
-        printl(node);
+        for (int i = 0; i < 9; i++) {
+            System.out.print(i + ":");
+            printl(smallerEqualBigger(head, i));
+            System.out.print(i + ":");
+            printl(smallerEqualBigger1(head, i));
+        }
     }
 
     //使用辅助数组，转化为数组版荷兰国旗问题
@@ -33,92 +37,81 @@ public class _03_SmallerEqualBigger {
             arr[i] = tmpHead.value;
             tmpHead = tmpHead.next;
         }
-        //i = -1 ? j = arr.length
+
         int i = -1;
         int j = arr.length;
-        int index = 0;
-        while (index != j) {
-            if (arr[index] > target) {
-                swap(arr, index++, --j);
-            } else if (arr[index] < target) {
-                swap(arr, index++, ++i);
+        int k = 0;
+        while (k < j) {
+            if (arr[k] < target) {
+                swap(arr, k++, ++i);
+            } else if (arr[k] > target) {
+                swap(arr, k, --j);
             } else {
-                index++;
+                k++;
             }
         }
+
         Node curNode = new Node(arr[0]);
         head = curNode;
         Node pre = curNode;
-        for (int k = 1; k < arr.length; k++) {
-            curNode = new Node(arr[k]);
+        for (int kk = 1; kk < arr.length; kk++) {
+            curNode = new Node(arr[kk]);
             pre.next = curNode;
             pre = curNode;
         }
         return head;
     }
 
-    //使用三对指针进行链表组合
-    private Node smallerEqualBigger1(Node head, int target) {
-        Node smSta = null;
-        Node smEnd = null;
-        Node eqSta = null;
-        Node eqEnd = null;
-        Node biSta = null;
-        Node biEnd = null;
-        Node tmp = null;
+    //使用三对指针分别指向小于区域的头尾，等于区域的头尾，大于区域的头尾
+    //然后进行将这三对指针进行整合
+    private Node smallerEqualBigger1(Node head, int pivot) {
+        Node sH = null; // small head
+        Node sT = null; // small tail
+        Node eH = null; // equal head
+        Node eT = null; // equal tail
+        Node bH = null; // big head
+        Node bT = null; // big tail
+        Node next = null; // save next node
+        // every node distributed to three lists
         while (head != null) {
-            if (head.value > target) {
-                if (biSta == null) {
-                    biSta = head;
+            next = head.next;
+            head.next = null;
+            if (head.value < pivot) {
+                if (sH == null) {
+                    sH = head;
+                    sT = head;
                 } else {
-                    tmp = biSta;
-                    while (tmp != biEnd) {
-                        tmp = tmp.next;
-                    }
-                    tmp.next = head;
+                    sT.next = head;
+                    sT = head;
                 }
-                biEnd = head;
-            } else if (head.value < target) {
-                if (smSta == null) {
-                    smSta = head;
+            } else if (head.value == pivot) {
+                if (eH == null) {
+                    eH = head;
+                    eT = head;
                 } else {
-                    tmp = smSta;
-                    while (tmp != smEnd) {
-                        tmp = tmp.next;
-                    }
-                    tmp.next = head;
+                    eT.next = head;
+                    eT = head;
                 }
-                smEnd = head;
             } else {
-                if (eqSta == null) {
-                    eqSta = head;
+                if (bH == null) {
+                    bH = head;
+                    bT = head;
                 } else {
-                    tmp = eqSta;
-                    while (tmp != eqEnd) {
-                        tmp = tmp.next;
-                    }
-                    tmp.next = head;
+                    bT.next = head;
+                    bT = head;
                 }
-                eqEnd = head;
             }
-            head = head.next;
+            head = next;
         }
-        if (smSta != null) {
-            tmp = smEnd;
-            while (tmp != smEnd) {
-                tmp = tmp.next;
-            }
-            tmp.next=null;
+        // small and equal reconnect
+        if (sT != null) {
+            sT.next = eH;
+            eT = eT == null ? sT : eT;
         }
-        if (smSta != null) {
-            tmp = smEnd;
-            while (tmp != smEnd) {
-                tmp = tmp.next;
-            }
-            tmp.next=null;
+        // all reconnect
+        if (eT != null) {
+            eT.next = bH;
         }
-        smEnd.next = eqSta;
-        eqEnd.next = biSta;
-        return smSta;
+        return sH != null ? sH : eH != null ? eH : bH;
     }
 }
