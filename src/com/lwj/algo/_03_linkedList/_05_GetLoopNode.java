@@ -9,7 +9,7 @@ import java.util.HashSet;
  * create by lwj on 2019/9/19
  * 检测链表是否有环，如果有，则返回入环节点
  */
-public class _05_DetectCycle {
+public class _05_GetLoopNode {
     @Test
     public void test() {
         // 1->2->3->4->5->6->7->null
