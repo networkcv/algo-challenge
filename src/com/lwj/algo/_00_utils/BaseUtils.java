@@ -180,9 +180,41 @@ public class BaseUtils {
     }
 
     /**
+     * 图形化 打印二叉树
+     */
+    public static void printl(TreeNode head) {
+        System.out.println("Binary Tree:");
+        printl(head, 0, "H", 17);
+        System.out.println();
+    }
+
+    private static void printl(TreeNode head, int height, String to, int len) {
+        if (head == null) {
+            return;
+        }
+        printl(head.right, height + 1, "v", len);
+        String val = to + head.value + to;
+        int lenM = val.length();
+        int lenL = (len - lenM) / 2;
+        int lenR = len - lenM - lenL;
+        val = getSpace(lenL) + val + getSpace(lenR);
+        System.out.println(getSpace(height * len) + val);
+        printl(head.left, height + 1, "^", len);
+    }
+
+    private static String getSpace(int num) {
+        String space = " ";
+        StringBuffer buf = new StringBuffer("");
+        for (int i = 0; i < num; i++) {
+            buf.append(space);
+        }
+        return buf.toString();
+    }
+
+    /**
      * 获取[0,10]内的整数
      */
-    private static int getOneInt(Integer i) {
+    public static int getOneInt(Integer i) {
         return (int) ((i + 1) * Math.random());
     }
 
