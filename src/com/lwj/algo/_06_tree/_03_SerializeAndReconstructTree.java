@@ -137,22 +137,34 @@ public class _03_SerializeAndReconstructTree {
     }
 
     private TreeNode reconByLevelString(String level) {
-        String[] split = level.split("!");
-        if (split[0].equals("#")) {
-            return null;
+        String[] values = level.split("!");
+        int index = 0;
+        TreeNode head = generateNodeByString(values[index++]);
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        if (head != null) {
+            queue.offer(head);
         }
-        TreeNode head = new TreeNode(Integer.parseInt(split[0]));
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(head);
-        for (int i = 1; i < split.length; i++) {
+        TreeNode node = null;
+        while (!queue.isEmpty()) {
             TreeNode cur = queue.poll();
-            if (cur != null) {
-                cur.left = split[i + 1].equals("#") ? null : new TreeNode(Integer.parseInt(split[i + 1]));
-                cur.right = split[i + 2].equals("#") ? null : new TreeNode(Integer.parseInt(split[i + 2]));
-                queue.add(cur);
+            cur.left = getTreeNode(values[index++]);
+            cur.right = getTreeNode(values[index++]);
+            if (cur.left != null) {
+                queue.offer(cur.left);
+            }
+            if (cur.right != null) {
+                queue.offer(cur.right);
             }
         }
         return head;
+    }
+
+    private TreeNode getTreeNode(String tar) {
+        if (tar.equals("#")) {
+            return null;
+        } else {
+            return new TreeNode(Integer.parseInt(tar));
+        }
     }
 
     //叶神-按层序列化
