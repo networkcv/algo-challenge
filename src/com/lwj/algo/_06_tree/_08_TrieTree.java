@@ -1,10 +1,19 @@
 package com.lwj.algo._06_tree;
 
+/**
+ * TrieTree 前缀树、字典树
+ *
+ * 1、字符串检索
+ * 2、词频统计
+ * 3、字符串排序
+ * 4、前缀匹配
+ * 5、作为其他数据结构算法的组成
+ */
 public class _08_TrieTree {
 
 	public static class TrieNode {
-		public int path;
-		public int end;
+		public int path; //通过该节点的个数
+		public int end;	//以该节点结尾的个数
 		public TrieNode[] nexts;
 
 		public TrieNode() {
@@ -56,6 +65,7 @@ public class _08_TrieTree {
 			}
 		}
 
+		//查找word添加了多少次
 		public int search(String word) {
 			if (word == null) {
 				return 0;
@@ -73,6 +83,7 @@ public class _08_TrieTree {
 			return node.end;
 		}
 
+		//查找有多少个字符串是以pre开头的
 		public int prefixNumber(String pre) {
 			if (pre == null) {
 				return 0;
