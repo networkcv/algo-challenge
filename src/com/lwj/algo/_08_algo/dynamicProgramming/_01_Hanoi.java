@@ -1,4 +1,4 @@
-package _08_algo.recursion;
+package com.lwj.algo._08_algo.dynamicProgramming;
 
 
 import org.junit.Test;
@@ -9,7 +9,7 @@ import org.junit.Test;
  * 使用递归进行问题转化
  * 从n如何处理，到n-1如何处理，最后n=1如何处理
  */
-public class _00_Hanoi {
+public class _01_Hanoi {
     @Test
     public void test() {
         hanoi(3, "左", "右", "中");
